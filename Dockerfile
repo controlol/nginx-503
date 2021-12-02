@@ -65,13 +65,10 @@ RUN set -eux; \
     make install; \
     rm -rf ${TMP_DIR}
 
-COPY ./config /etc/nginx
-COPY ./www /var/www/default
+ADD root /
 
-EXPOSE 80 443
+EXPOSE 80
 WORKDIR /etc/nginx
-
-STOPSIGNAL SIGTERM
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
 
