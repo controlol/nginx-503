@@ -3,7 +3,7 @@ LABEL maintainer "Luc Appelman lucapppelman@gmail.com"
 
 RUN set -ex && \
     addgroup --system --gid 101 nginx; \
-    adduser --system --disabled-login --ingroup nginx --no-create-home --home /nonexistent --gecos "nginx user" --shell /bin/false --uid 101 nginx
+    adduser -S -G nginx -g "nginx user" -s /sbin/nologin -u 101 nginx
 
 RUN set -ex; \
     apk add --update-cache \
